@@ -12,11 +12,16 @@ export interface ExerciseRowProps {
     onReplaceExercise?: ExerciseActionFn;
 }
 
+/* 
+    This component contains complete exercise data and actions.
+*/
 export function ExerciseRow({
     exercise,
     onDeleteExercise,
     onReplaceExercise,
 }: ExerciseRowProps) {
+    // We basically only want to sort, so it's good to use `useSortable` instead of mindlessly
+    // dragging components
     const {
         attributes,
         listeners,
@@ -26,11 +31,11 @@ export function ExerciseRow({
         isDragging,
     } = useSortable({ id: exercise.id });
 
-    // 2. Define Styles (movement logic)
+    // Styles while dragging the exercise row
     const style = {
         transform: CSS.Transform.toString(transform),
         transition,
-        opacity: isDragging ? 0.5 : 1, // Visual feedback when dragging
+        opacity: isDragging ? 0.5 : 1, 
         zIndex: isDragging ? 50 : 'auto',
         position: 'relative' as const,
     };

@@ -1,5 +1,8 @@
 import { Week } from "@/features/workout-generator/types";
 
+/* 
+    Fake data generated for testing purposes.
+*/
 export const DUMMY_WEEKS: Week[] = [
     {
         id: 1,

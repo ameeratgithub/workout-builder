@@ -10,6 +10,8 @@ export function useWorkout() {
     const generatePlan = async (prompt: string) => {
         setIsLoading(true);
         try {
+            // Hooks should call actions, and shouldn't call API's directly because of potential
+            // security risks involving API keys.
             const data = await generateWorkoutAction(prompt);
             setWeeks(data);
             return true;
@@ -25,6 +27,7 @@ export function useWorkout() {
         async (exerciseId: string) => {
             const previousWeeks = [...weeks];
 
+            // Only filter exercises, other parent objects will not be updated/removed
             const updatedWeeks = weeks.map((week) => ({
                 ...week,
                 days: week.days.map((day) => ({
@@ -35,6 +38,7 @@ export function useWorkout() {
                 })),
             }));
 
+            // Optimistic state setting, will roll back if failed
             setWeeks(updatedWeeks);
             try {
                 await savePlanToDbAction(updatedWeeks);
@@ -65,8 +69,8 @@ export function useWorkout() {
                 const [movedItem] = targetDay.exercises.splice(fromIndex, 1);
                 targetDay.exercises.splice(toIndex, 0, movedItem);
 
+                // Optimistic state setting, will roll back if failed
                 setWeeks(newWeeks);
-
                 try {
                     await savePlanToDbAction(newWeeks);
                 } catch (err) {

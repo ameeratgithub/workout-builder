@@ -13,6 +13,9 @@ interface ExtendedExerciseRowProps extends ExerciseRowProps {
     dragHandleProps?: DragHandleProps;
 }
 
+/* 
+    This component is has buttons to delete and re-order exercises.
+*/
 export function ExerciseActions({
     exercise,
     onDeleteExercise,
@@ -47,6 +50,10 @@ interface ExerciseActionProps extends React.HTMLAttributes<HTMLElement> {
     buttonClass: string;
     children: React.ReactNode;
 }
+
+/* 
+    Re-usable Component for action buttons
+*/
 function ExerciseAction({
     onClick,
     buttonClass,

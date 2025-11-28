@@ -32,6 +32,7 @@ export default function RootLayout({
             <body
                 className={`${poppins.variable} ${bricolage.variable} font-sans`}
             >
+                {/* Context Provider to save state across pages and navigation */}
                 <WorkoutProvider>
                     <main className="min-h-screen bg-[#F7F7F7] w-full flex flex-col items-center justify-center font-sans">
                         {children}

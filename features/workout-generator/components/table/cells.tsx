@@ -1,5 +1,8 @@
 import { cn } from "@/lib/utils";
 
+/* 
+    Re-usable components for cells
+*/
 export const HeaderCell = ({
     width,
     label,

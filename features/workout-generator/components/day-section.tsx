@@ -74,10 +74,14 @@ export function DaySection({
                 <div className="w-full flex flex-col gap-[4px] overflow-x-auto pb-1">
                     <HeaderRow />
 
+                    {/* `DndContext` and `SortableContext` provides essential
+                    functionality to reorder exercises rows */}
                     <DndContext
                         sensors={sensors}
                         collisionDetection={closestCenter}
                         onDragEnd={handleDragEnd}
+                        // We don't want any horizontal movement, that's why this
+                        // modifier is being used here
                         modifiers={[restrictToVerticalAxis]}
                     >
                         <SortableContext

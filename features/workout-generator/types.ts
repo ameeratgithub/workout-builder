@@ -1,5 +1,9 @@
 // features/workout-generator/types.ts
 
+/* 
+    Types needed for API and front-end integrations. Types make sure that we don't make mistakes
+    when using objects
+*/
 export interface Day {
     title: string;
     shouldRest: boolean;

@@ -20,6 +20,7 @@ export function WorkoutProvider({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         const init = async () => {
             try {
+                // Getting data from the database when application loads
                 const data = await getPlansFromDBAction();
                 if (data && data.length > 0) {
                     setWeeks(data);

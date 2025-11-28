@@ -14,17 +14,27 @@ export function WorkoutPlanView() {
     return (
         <div className="w-full min-h-screen bg-[#F7F7F7] p-8 font-poppins overflow-x-auto">
             <div className="max-w-[1261px] mx-auto space-y-8">
+
                 {isLoading && (
                     <div className="min-h-screen p-4">
                         Loading your workout plan...
                     </div>
                 )}
+                
                 {error && (
                     <div className="min-h-screen p-4 text-red-500">
                         Error: {error}
                     </div>
                 )}
-                {!isLoading && !error && (
+
+                {weeks.length < 1 && (
+                    <div className="min-h-screen p-4 text-red-500">
+                        Couldn't load workout plans. Please generate new plan
+                    </div>
+                )}
+
+                {/* Only render if everything is alright and data is ready to be displayed */}
+                {!isLoading && !error && weeks.length > 0 && (
                     <>
                         <WeekTabs
                             weeks={weeks}

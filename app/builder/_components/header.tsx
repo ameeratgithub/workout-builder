@@ -3,10 +3,9 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
-interface HeaderProps extends React.HTMLAttributes<HTMLElement> {}
-
-export const Header = ({ className, ...props }: HeaderProps) => {
+export const Header = ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
     return (
+        // Container of 'Maxed' logo
         <header
             className={cn(
                 '' ,
